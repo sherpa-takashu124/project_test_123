@@ -1,0 +1,123 @@
+====================================================
+              GIT CHEAT SHEET
+====================================================
+
+----------------------------------------------------
+ SETUP & CONFIG
+----------------------------------------------------
+git config --global user.name "Your Name"       Set your name for commits
+git config --global user.email "you@email.com"  Set your email for commits
+git config --list                               Show all config settings
+
+----------------------------------------------------
+ CREATING REPOSITORIES
+----------------------------------------------------
+git init                          Initialize a new git repo in current folder
+git clone <url>                   Download a repo from GitHub/remote
+
+----------------------------------------------------
+ BASIC WORKFLOW
+----------------------------------------------------
+git status                        Check which files are changed/staged/untracked
+git add <file>                    Stage a specific file for commit
+git add .                         Stage all changed files
+git commit -m "message"           Save staged changes with a message
+git push                          Upload commits to remote (GitHub)
+git pull                          Download and merge changes from remote
+
+----------------------------------------------------
+ BRANCHING
+----------------------------------------------------
+git branch                        List all local branches
+git branch <name>                 Create a new branch
+git checkout <name>               Switch to a branch
+git checkout -b <name>            Create and switch to a new branch
+git switch <name>                 Switch to a branch (newer command)
+git switch -c <name>              Create and switch to a new branch (newer)
+git merge <branch>                Merge a branch into current branch
+git branch -d <name>              Delete a branch (safe - only if merged)
+git branch -D <name>              Force delete a branch
+
+----------------------------------------------------
+ REMOTE REPOSITORIES
+----------------------------------------------------
+git remote -v                     Show remote URLs
+git remote add origin <url>       Add a new remote called "origin"
+git remote set-url origin <url>   Change the URL of "origin"
+git remote remove origin          Remove a remote
+git push -u origin <branch>       Push branch and set it to track remote
+git fetch                         Download remote changes (don't merge)
+
+----------------------------------------------------
+ VIEWING HISTORY
+----------------------------------------------------
+git log                           Show commit history
+git log --oneline                 Show compact commit history (one line each)
+git log --graph --oneline         Show branch history as a graph
+git diff                          Show unstaged changes
+git diff --staged                 Show staged changes
+git show <commit>                 Show details of a specific commit
+
+----------------------------------------------------
+ UNDOING CHANGES
+----------------------------------------------------
+git restore <file>                Discard changes in a file (unstaged)
+git restore --staged <file>       Unstage a file (keep changes)
+git reset HEAD~1                  Undo last commit (keep changes)
+git reset --hard HEAD~1           Undo last commit (DELETE changes)
+git revert <commit>               Create new commit that undoes a past commit
+git stash                         Temporarily save uncommitted changes
+git stash pop                     Restore stashed changes
+
+----------------------------------------------------
+ CHECKING & COMPARING
+----------------------------------------------------
+git log origin/main..HEAD         Show commits not yet pushed
+git diff main..feature            Compare two branches
+git blame <file>                  Show who changed each line of a file
+
+----------------------------------------------------
+ TAGGING
+----------------------------------------------------
+git tag <name>                    Create a lightweight tag
+git tag -a v1.0 -m "message"     Create an annotated tag
+git push origin <tag>             Push a tag to remote
+git push origin --tags            Push all tags to remote
+
+----------------------------------------------------
+ AUTHENTICATION (PAT TOKEN)
+----------------------------------------------------
+# Set token in remote URL:
+git remote set-url origin https://USERNAME:TOKEN@github.com/USERNAME/REPO.git
+
+# Clear saved credentials (macOS):
+git credential-osxkeychain erase
+
+----------------------------------------------------
+ COMMON WORKFLOW EXAMPLE
+----------------------------------------------------
+git init                          1. Start a repo
+git add .                         2. Stage all files
+git commit -m "first commit"      3. Commit
+git branch -M main                4. Rename branch to main
+git remote add origin <url>       5. Connect to GitHub
+git push -u origin main           6. Push to GitHub
+
+----------------------------------------------------
+ .GITIGNORE (files git should ignore)
+----------------------------------------------------
+# Add these patterns to a .gitignore file:
+node_modules/                     Ignore node_modules folder
+.env                              Ignore environment variables file
+*.log                             Ignore all .log files
+.DS_Store                         Ignore macOS system files
+
+----------------------------------------------------
+ HELPFUL TIPS
+----------------------------------------------------
+- Always "git pull" before starting new work
+- Commit often with clear messages
+- Use branches for new features
+- Never commit passwords or tokens
+- Use .gitignore to keep repos clean
+====================================================
